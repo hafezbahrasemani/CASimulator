@@ -45,7 +45,6 @@ public class AR {
         for(int i = 0; i < 12; i++){
             address += Math.pow(2,i) * arRegister[11 - i];
         }
-
         return address;
     }
 
@@ -60,12 +59,17 @@ public class AR {
     }
 
     /**
-     * printContent
-     * This method prints the content of the AR register
+     * toString
+     * @return the AR address as a string
      */
-    public void prinContent(){
+    @Override
+    public String toString() {
+        String str = null;
+
         for (int i = 0; i < 12; i++){
-            System.out.print(arRegister[11 - i]);
+            str += arRegister[11 - i];
         }
+
+        return "AR: " + str;
     }
 }
