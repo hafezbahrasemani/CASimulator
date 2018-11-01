@@ -14,5 +14,5 @@ public class DR {
         this.drRegister = new int[16];
     }
 
-    
+
 }

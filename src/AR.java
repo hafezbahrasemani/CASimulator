@@ -4,48 +4,13 @@
  *
  * @author hafez
  */
-public class AR {
-    int[] arRegister;
-
+public class AR extends Register{
 
     /**
      * Constructor
-     *
      */
     public AR() {
-        arRegister = new int[12];
-    }
-
-
-    /**
-     * getArRegister
-     * @return the 12bits AR register
-     */
-    public int[] getArRegister() {
-        return arRegister;
-    }
-
-
-    /**
-     * load
-     * @param arRegister the 12bits to be load in AR register
-     */
-    public void load(int[] arRegister) {
-        this.arRegister = arRegister;
-    }
-
-
-    /**
-     * readAddress
-     * @return the decimal address of the binary content of arRegister
-     */
-    public int readAddress(){
-        int address = 0;
-
-        for(int i = 0; i < 12; i++){
-            address += Math.pow(2,i) * arRegister[11 - i];
-        }
-        return address;
+        super(12);
     }
 
 
@@ -54,22 +19,7 @@ public class AR {
      */
     public void clear(){
         for(int i = 0; i < 12; i++){
-            arRegister[i] = 0;
+            super.register[i] = 0;
         }
-    }
-
-    /**
-     * toString
-     * @return the AR address as a string
-     */
-    @Override
-    public String toString() {
-        String str = null;
-
-        for (int i = 0; i < 12; i++){
-            str += arRegister[11 - i];
-        }
-
-        return "AR: " + str;
     }
 }
