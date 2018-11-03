@@ -4,14 +4,13 @@
  *
  * @author hafez
  */
-public class DR {
-    int[] drRegister;
+public class DR extends Register{
 
     /**
      * Constructor
      */
     public DR() {
-        this.drRegister = new int[16];
+        super();
     }
 
 

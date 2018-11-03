@@ -5,50 +5,68 @@
  * @author hafez
  */
 public class Register {
-    int[] register;
+
+    StringBuilder content ;
 
     /**
      * Constructor
      */
-    public Register(int size){
-        register = new int[size];
+    public Register(){
+        content=new StringBuilder();
     }
 
     /**
      * read
-     *
-     * This method reads the data stored in register
-     * @return the array containing data
+     * @return the data that memory contains
      */
-    public int[] read(){
-        int[] content = new int[12];
+    public StringBuilder read (){
+        return  content;
 
-        for(int i = 0; i < register.length; i++){
-            content[i] = register[i];
-        }
-
-        return content;
     }
-
 
     /**
      * write
-     * @param data the array to be write in register
+     * @param data the data to be write on the contentister
      */
-    public void write(int[] data){
-        for(int i = 0; i < register.length;i++){
-            register[i] = data[i];
-        }
+    public void write (StringBuilder data){
+        content.replace(0,content.length(), String.valueOf(data));
     }
 
-    @Override
-    public String toString() {
-        String str = null;
+    /**
+     * getMode
+     * @return mode of the instruction(0 or 1)
+     */
+    public int getMode(){
+        int mode;
 
-        for (int i = 0; i < 12; i++){
-            str += register[11 - i];
-        }
+        mode = Integer.parseInt(String.valueOf(content.subSequence(0,1)));
+
+        return mode;
+    }
+
+    /**
+     * getOp
+     * @return the 3bits opcode that specifies the operation to be done
+     */
+    public StringBuilder getOp(){
+        StringBuilder str = new StringBuilder();
+
+        str.append(content.subSequence(1,5));
 
         return str;
+
     }
+
+    /**
+     * getAddress
+     * @return the string that is the address part of the instruction
+     */
+    public StringBuilder getAddress(){
+        StringBuilder add = new StringBuilder();
+
+        add.append(content.subSequence(5,16));
+
+        return add;
+    }
+
 }

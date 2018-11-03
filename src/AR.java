@@ -10,16 +10,6 @@ public class AR extends Register{
      * Constructor
      */
     public AR() {
-        super(12);
-    }
-
-
-    /**
-     * clear
-     */
-    public void clear(){
-        for(int i = 0; i < 12; i++){
-            super.register[i] = 0;
-        }
+        super();
     }
 }
