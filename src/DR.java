@@ -13,5 +13,28 @@ public class DR extends Register{
         super();
     }
 
+    /**
+     * increment
+     */
+    public void increment(){
+
+        int i = Integer.parseInt(String.valueOf(content), 2);
+
+        i++;
+
+
+        content.replace(0,16, Integer.toBinaryString(i));
+    }
+
+
+    public boolean isZero(){
+        boolean b = true;
+
+        for(int i = 0; i < content.length(); i++){
+            if(content.charAt(i) == '1') b = false;
+        }
+
+        return b;
+    }
 
 }
