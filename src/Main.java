@@ -49,47 +49,108 @@ public class Main {
 
 
        String hexContent = String.valueOf(ir.getHexadecimal());
+       String opCode = String.valueOf(ir.getOp());
 
-       if (I == 0)
+       System.out.println(opCode);
+
+       if ((I == 0) && (opCode.equals("111")))
        {
-
            switch (hexContent){
                //Clear AC
                case "7800": ac.clear();
 
-               case "7400":
+               //Clear E
+               case "7400": ac.setE(0);
+                            break;
 
                //Complement AC
                case "7200": ac.complement();
+                            break;
 
-               case "7100":
+               //Complement E
+               case "7100": ac.complementE();
+                            break;
 
-               case "7080":
+               //Circulate right
+               case "7080": ac.circulateRight();
+                            break;
 
-               case "7040":
+               //Circulate left
+               case "7040": ac.circulateLeft();
+                            break;
+               //Increment AC
+               case "7020": ac.increment();
+                            break;
 
+               //Skip if positive
+               case "7010":{
+                   if(ac.read().substring(0,1) == "0") pc.increment();
+               }
+               break;
 
-               case "7020":
+               //Skip if negative
+               case "7008":{
+                   if(ac.read().substring(0,1) == "1") pc.increment();
+               }
+               break;
 
-               case "7010":
+               //Skip if AC is zero
+               case "7004":{
+                   if(ac.isZero()) pc.increment();
+               }
+               break;
 
-               case "7008":
+               //Skip if E is Zero
+               case "7002": {
+                   if(ac.getE() == 0) pc.increment();
+               }
+               break;
 
-               case "7004":
+               //Halt Computer -> exit with code 3
+               case "7001": System.exit(3);
+           }
+       }else if(!opCode.equals("111")){
+           switch (opCode){
 
-               case "7002":
+               //And memory word to AC
+               case "000":{
 
-               case "7001":
+               }break;
+
+               //Add memory word to AC
+               case "001":{
+
+               }break;
+
+               //Load memory word to AC
+               case "010":{
+
+               }break;
+
+               //Store content of AC in memory
+               case "011":{
+
+               }break;
+
+               //Branch unconditionally
+               case "100":{
+
+               }break;
+
+               //Branch and save return address
+               case "101":{
+
+               }break;
+
+               //Increment and skip if zero
+               case "110":{
+
+               }break;
            }
        }
 
 
-
-        ar.write(memory.read(0));
-        System.out.println(hexContent);
-        System.out.println(ar.getMode());
-        System.out.println(ar.getOp());
-
+        System.out.println(pc.read());
         System.out.println("AC:" + ac.read());
     }
 }

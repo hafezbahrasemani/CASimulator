@@ -52,7 +52,7 @@ public class Register {
     public StringBuilder getOp(){
         StringBuilder str = new StringBuilder();
 
-        str.append(content.subSequence(1,5));
+        str.append(content.subSequence(1,4));
 
         return str;
 
