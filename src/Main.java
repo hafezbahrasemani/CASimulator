@@ -48,18 +48,19 @@ public class Main {
        int I = ir.getMode();
 
 
-       String opcode =String.valueOf(ir.getOp());
        String hexContent = String.valueOf(ir.getHexadecimal());
 
        if (I == 0)
        {
 
            switch (hexContent){
+               //Clear AC
                case "7800": ac.clear();
 
                case "7400":
 
-               case "7200":
+               //Complement AC
+               case "7200": ac.complement();
 
                case "7100":
 

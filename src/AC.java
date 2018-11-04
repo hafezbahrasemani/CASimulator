@@ -9,7 +9,7 @@ public class AC extends Register{
      */
     public AC() {
         super();
-        super.write(new StringBuilder("0000111100001111"));
+        super.write(new StringBuilder("0000000000001111"));
     }
 
     /**
@@ -37,19 +37,14 @@ public class AC extends Register{
 
     /**
      * complement
+     * make the content of AC register complement
      */
     public void complement(){
-        char[] convertedChar = new char[content.length()];
-        char[] originChar;
+        int i = (int) ((Math.pow(2, 16) - 1) - Integer.parseInt(
+                        String.valueOf(content), 2));
 
-        originChar = String.valueOf(content).toCharArray();
-
-        for(int i = 0; i < originChar.length; i++){
-            if(originChar[i] == 0) convertedChar[i] = 1;
-            else convertedChar[i] = 0;
-        }
-
-        StringBuilder str = new StringBuilder(String.valueOf(convertedChar));
+        StringBuilder str = new StringBuilder(
+                Integer.toBinaryString(i));
 
         super.write(str);
     }

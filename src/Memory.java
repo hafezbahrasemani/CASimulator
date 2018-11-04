@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author hafez
  */
 public class Memory {
+    int E;
     ArrayList<StringBuilder> memory;
 
 
@@ -49,5 +50,21 @@ public class Memory {
         for(StringBuilder str: memory){
             System.out.println(str);
         }
+    }
+
+    /**
+     * getE
+     * @return the content of Flip-Flop E
+     */
+    public int getE() {
+        return E;
+    }
+
+    /**
+     * setE
+     * @param e the new value to be written in E
+     */
+    public void setE(int e) {
+        E = e;
     }
 }
