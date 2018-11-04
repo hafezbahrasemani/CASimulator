@@ -39,6 +39,18 @@ public class AC extends Register{
      * complement
      */
     public void complement(){
+        char[] convertedChar = new char[content.length()];
+        char[] originChar;
 
+        originChar = String.valueOf(content).toCharArray();
+
+        for(int i = 0; i < originChar.length; i++){
+            if(originChar[i] == 0) convertedChar[i] = 1;
+            else convertedChar[i] = 0;
+        }
+
+        StringBuilder str = new StringBuilder(String.valueOf(convertedChar));
+
+        super.write(str);
     }
 }
