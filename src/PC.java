@@ -17,4 +17,17 @@ public class PC extends Register{
         super.write(new StringBuilder("000000000000"));
     }
 
+    /**
+     * increment
+     */
+    public void increment(){
+
+        int i = Integer.parseInt(String.valueOf(super.content), 2);
+
+        i++;
+
+
+        super.content.replace(0,12, Integer.toBinaryString(i));
+    }
+
 }

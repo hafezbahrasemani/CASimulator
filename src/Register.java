@@ -29,6 +29,7 @@ public class Register {
      * @param data the data to be write on the contentister
      */
     public void write (StringBuilder data){
+
         content.replace(0,content.length(), String.valueOf(data));
     }
 
@@ -69,4 +70,17 @@ public class Register {
         return add;
     }
 
+    /**
+     * getHexadecimal
+     *
+     * @return the equivalent hexadecimal of the register content
+     */
+    public StringBuilder getHexadecimal(){
+        String hex;
+
+        hex = Integer.toHexString(Integer.parseInt(
+                String.valueOf(content.subSequence(0,16)),2));
+
+        return new StringBuilder(hex);
+    }
 }
