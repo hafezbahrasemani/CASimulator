@@ -99,7 +99,6 @@ public class AC extends Register{
      */
     public void circulateLeft(){
         String str = content.substring(1);
-        System.out.println("ACLEF:" + str);
 
         content.replace(0,content.length(),"");
 
